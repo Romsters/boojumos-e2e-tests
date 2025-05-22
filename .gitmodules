@@ -1,0 +1,6 @@
+[submodule "lib/execution-spec-tests"]
+	path = lib/execution-spec-tests
+	url = https://github.com/Romsters/execution-spec-tests.git
+[submodule "lib/rpc-tests"]
+	path = lib/rpc-tests
+	url = https://github.com/Romsters/rpc-tests.git
