@@ -56,7 +56,7 @@ fi
 # Update or add the TX_HASH variable in the .env.gobi file
 if grep -q "^TX_HASH=" .env.gobi; then
   # Replace existing line
-  sed -i.bak '' "s|^TX_HASH=.*|TX_HASH=$first_tx_hash|" .env.gobi && rm .env.gobi.bak
+  sed -i.bak "s|^TX_HASH=.*|TX_HASH=$first_tx_hash|" .env.gobi && rm .env.gobi.bak
 else
   # Append new line
   echo "TX_HASH=$first_tx_hash" >> .env.gobi
