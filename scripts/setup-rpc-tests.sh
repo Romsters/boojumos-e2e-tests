@@ -47,7 +47,7 @@ echo "First transaction hash from latest block: $first_tx_hash"
 # Update or add the BLOCK_HASH variable in the .env.gobi file
 if grep -q "^BLOCK_HASH=" .env.gobi; then
   # Replace existing line
-  sed -i '' "s|^BLOCK_HASH=.*|BLOCK_HASH=$block_hash|" .env.gobi
+  sed -i.bak "s|^BLOCK_HASH=.*|BLOCK_HASH=$block_hash|" .env.gobi && rm .env.gobi.bak
 else
   # Append new line
   echo "BLOCK_HASH=$block_hash" >> .env.gobi
@@ -56,7 +56,7 @@ fi
 # Update or add the TX_HASH variable in the .env.gobi file
 if grep -q "^TX_HASH=" .env.gobi; then
   # Replace existing line
-  sed -i '' "s|^TX_HASH=.*|TX_HASH=$first_tx_hash|" .env.gobi
+  sed -i.bak '' "s|^TX_HASH=.*|TX_HASH=$first_tx_hash|" && rm .env.gobi.bak
 else
   # Append new line
   echo "TX_HASH=$first_tx_hash" >> .env.gobi
