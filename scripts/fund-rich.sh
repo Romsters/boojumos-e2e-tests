@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Load any .env overrides
-export $(grep -v '^#' .env | xargs)
-
 # ─── Configurable variables ─────────────
 RPC_URL=${LOCAL_L1_RPC_URL:-http://localhost:8545}
 L2_RPC_URL=${LOCAL_L2_RPC_URL:-http://localhost:3050}
@@ -29,7 +26,7 @@ echo "→ using bridge-hub at $BRIDGE_HUB"
 
 CHAIN_ID=${CHAIN_ID:-271}
 
-# 10 ETH on L1 → L2
+# 30 ETH on L1 → L2
 DEPOSIT_WEI=${DEPOSIT_WEI:-30000000000000000000}
 
 # L2 tx parameters
@@ -65,4 +62,4 @@ cast send \
 
 echo ""
 echo "✅ Tx submitted! You can check L2 balance with:"
-echo "   cast balance <address> --rpc-url <L2>"
+echo "   cast balance ${FROM} --rpc-url ${L2_RPC_URL}"

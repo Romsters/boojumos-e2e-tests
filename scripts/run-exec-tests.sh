@@ -16,5 +16,6 @@ uv run execute remote \
   --rpc-endpoint "${EXEC_TESTS_L2_RPC_URL}" \
   --rpc-chain-id "${EXEC_TESTS_CHAIN_ID}" \
   --rpc-seed-key "${EXEC_TESTS_PRIVATE_KEY}" \
+  --junitxml="junit-report.xml" \
   -n auto \
   "${EXEC_TESTS_EXEC_TEST_PATH}"
