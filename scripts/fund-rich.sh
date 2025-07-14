@@ -24,7 +24,7 @@ if [[ -z "$BRIDGE_HUB" || "$BRIDGE_HUB" == "null" ]]; then
 fi
 echo "→ using bridge-hub at $BRIDGE_HUB"
 
-CHAIN_ID=${CHAIN_ID:-271}
+CHAIN_ID=${CHAIN_ID:-270}
 
 # 30 ETH on L1 → L2
 DEPOSIT_WEI=${DEPOSIT_WEI:-30000000000000000000}
