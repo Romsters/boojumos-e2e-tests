@@ -36,7 +36,7 @@ if [ "$block_hash" == "null" ] || [ -z "$block_hash" ]; then
 fi
 echo "Latest block hash: $block_hash"
 
-first_tx_hash=$(echo "$response" | jq -r '.result.transactions[0].hash // empty')
+first_tx_hash=$(echo "$response" | jq -r '.result.transactions[0].inner.hash // empty')
 # Validate transaction presence
 if [ -z "$first_tx_hash" ]; then
   echo "No transactions found in the latest block. Aborting."

@@ -3,9 +3,9 @@ set -euo pipefail
 
 # ─── Configurable variables ─────────────
 RPC_URL=${LOCAL_L1_RPC_URL:-http://localhost:8545}
-L2_RPC_URL=${LOCAL_L2_RPC_URL:-http://localhost:3053}
+L2_RPC_URL=${LOCAL_L2_RPC_URL:-http://localhost:3050}
 # Assumes using default Rich account PK ending in 4110
-FROM=${FROM:-0x36615Cf349d7F6344891B1e7CA7C72883F5dc049}
+FROM=${FROM:- 0x36615Cf349d7F6344891B1e7CA7C72883F5dc049}
 PRIVATE_KEY=${PRIVATE_KEY:-0x7726827caac94a7f9e1b160f7ea819f172f7b6f9d2a97f992c38edeab82d4110}
 
 # ─── Fetch the current bridgehub address ─────────────
