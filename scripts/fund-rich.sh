@@ -5,7 +5,7 @@ set -euo pipefail
 RPC_URL=${LOCAL_L1_RPC_URL:-http://localhost:8545}
 L2_RPC_URL=${LOCAL_L2_RPC_URL:-http://localhost:3050}
 # Assumes using default Rich account PK ending in 4110
-FROM=${FROM:- 0x36615Cf349d7F6344891B1e7CA7C72883F5dc049}
+FROM=${FROM:-0x36615Cf349d7F6344891B1e7CA7C72883F5dc049}
 PRIVATE_KEY=${PRIVATE_KEY:-0x7726827caac94a7f9e1b160f7ea819f172f7b6f9d2a97f992c38edeab82d4110}
 
 # ─── Fetch the current bridgehub address ─────────────
@@ -39,9 +39,6 @@ PUBDATA_LIMIT=${PUBDATA_LIMIT:-800}
 FACTORY_DEP=${FACTORY_DEP:-${PRIVATE_KEY}}
 FACTORY_DEPS="[${FACTORY_DEP}]"
 
-# L1 gas settings
-GAS_LIMIT=${GAS_LIMIT:-10000000}
-GAS_PRICE=${GAS_PRICE:-50000000}      # in wei
 # ────────────────────────────────────────────────────────────────────
 
 echo "→ Depositing $(bc -l <<<"scale=4; $DEPOSIT_WEI/1e18") ETH from $FROM to L2 (chain $CHAIN_ID)…"
@@ -56,8 +53,6 @@ cast send \
   "$BRIDGE_HUB" \
   'requestL2TransactionDirect((uint256,uint256,address,uint256,bytes,uint256,uint256,bytes[],address))' \
   "$ARGS" \
-  --gas-limit "$GAS_LIMIT" \
-  --gas-price "$GAS_PRICE" \
   --value     "$DEPOSIT_WEI"
 
 echo ""
